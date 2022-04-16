@@ -2,7 +2,7 @@ import React from 'react'
 import { TextField, Button, Grid, Typography, Container, Paper } from '@material-ui/core'
 import { makeStyles } from  "@material-ui/core";
 import {CopyToClipboard} from 'copy-to-clipboard'
-import {Assignment, Phone, PhoneDisabled} from '@material-ui/icons'
+import {Assignment, ClassSharp, Phone, PhoneDisabled} from '@material-ui/icons'
 import { SocketContext } from '../SocketContext';
 import { useState } from 'react';
 import { useContext } from 'react';
@@ -57,12 +57,45 @@ const Options = ({children}) => {
                        </Typography>
                        <TextField  label="Name" value={name} onChange={(e)=>setName(e.target.value)} fullWidth />
                        <copy text={me} className={classes.margin} >
-                         <Button variant='contained' color='primary' fullWidth startIcon={<Assignment fontSize='large' />} >
-
+                         <Button 
+                         variant='contained' 
+                         color='primary' 
+                         fullWidth 
+                         startIcon={<Assignment fontSize='large' />}
+                         className={classes.margin} >
+                                Copy Your ID
                          </Button>
 
                        </copy>
                 </Grid>
+
+                <Grid item xs={12} md={6} className={classes.padding} >
+                       <Typography gutterBottom variant='h6' >
+                          Make Call
+                       </Typography>
+                       <TextField  label="ID" value={idToCall} onChange={(e)=>setIdToCall(e.target.value)} fullWidth />
+                        {callAccepted && !callEnded ? (
+                          <Button 
+                          variant='contained' 
+                          color='secondary' 
+                          startIcon={<PhoneDisabled fontSize='large' />}
+                          fullWidth 
+                          onClick={leaveCall} 
+                          className={classes.margin}  >
+                            Hang Up
+                          </Button>
+                        ): (
+                          <Button 
+                            variant='contained' 
+                            color='primary' 
+                            startIcon={<Phone fontSize='large' />}
+                            fullWidth 
+                            onClick={()=>callUser(idToCall)} 
+                            className={classes.margin}  >
+                              Call
+                            </Button>
+                        )}
+                </Grid> 
           </Grid>
 
         </form>
