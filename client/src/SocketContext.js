@@ -17,7 +17,7 @@ const ContextProvider = ({ children }) => {
 
   const myVideo = useRef();
   const userVideo = useRef();
-  const connection = useRef();
+  const connectionRef = useRef();
 
   useEffect(() => {
     navigator.mediaDevices
