@@ -100,11 +100,8 @@ const Options = ({children}) => {
 
         </form>
 
-      </Paper>
-
-
-      Options
       {children}
+      </Paper>
       </Container>
   );
 }
