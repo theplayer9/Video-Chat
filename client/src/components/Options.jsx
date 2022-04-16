@@ -1,12 +1,12 @@
 import React from 'react'
 import { TextField, Button, Grid, Typography, Container, Paper } from '@material-ui/core'
 import { makeStyles } from  "@material-ui/core";
-import {CopyToClipboard} from 'copy-to-clipboard'
+import {CopyToClipboard} from 'react-copy-to-clipboard'
 import {Assignment, ClassSharp, Phone, PhoneDisabled} from '@material-ui/icons'
 import { SocketContext } from '../SocketContext';
 import { useState } from 'react';
 import { useContext } from 'react';
-import copy from 'copy-to-clipboard';
+// import copy from 'copy-to-clipboard';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -56,7 +56,8 @@ const Options = ({children}) => {
                           Account Info
                        </Typography>
                        <TextField  label="Name" value={name} onChange={(e)=>setName(e.target.value)} fullWidth />
-                       <copy text={me} className={classes.margin} >
+                       {console.log(me)}
+                       <CopyToClipboard text={me} className={classes.margin} >
                          <Button 
                          variant='contained' 
                          color='primary' 
@@ -66,7 +67,7 @@ const Options = ({children}) => {
                                 Copy Your ID
                          </Button>
 
-                       </copy>
+                       </CopyToClipboard>
                 </Grid>
 
                 <Grid item xs={12} md={6} className={classes.padding} >
