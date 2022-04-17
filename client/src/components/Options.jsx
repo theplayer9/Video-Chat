@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { useContext } from 'react';
 // import copy from 'copy-to-clipboard';
 
-
+ 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     padding: '10px 20px',
-    border: '2px solid black',
+    border: '2px solid black', 
   },
 }));
 
@@ -74,7 +74,8 @@ const Options = ({children}) => {
                        <Typography gutterBottom variant='h6' >
                           Make Call
                        </Typography>
-                       <TextField  label="ID" value={idToCall} onChange={(e)=>setIdToCall(e.target.value)} fullWidth />
+                       <TextField  label="ID to Call" value={idToCall} onChange={(e)=>setIdToCall(e.target.value)} fullWidth />
+                       {console.log("this is idtocall :",idToCall)}
                         {callAccepted && !callEnded ? (
                           <Button 
                           variant='contained' 
@@ -100,8 +101,8 @@ const Options = ({children}) => {
           </Grid>
 
         </form>
-
       {children}
+      
       </Paper>
       </Container>
   );
